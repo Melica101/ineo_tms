@@ -1,0 +1,215 @@
+<header class="z-40 items-center w-full h-[70px] bg-white shadow-lg dark:bg-gray-700 rounded-2xl">
+  <div class="relative z-20 flex flex-col justify-center h-full px-3 mx-auto flex-center">
+    <div class="relative flex items-center w-full pl-1 lg:max-w-68 sm:pr-2 sm:ml-0">
+      <div class="flex gap-4 w-full items-center">
+        <div class="flex gap-1 items-center">
+          <svg width="20px" height="20px" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"
+            stroke="#606060">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M22 3.58002H2C1.99912 5.28492 2.43416 6.96173 3.26376 8.45117C4.09337 9.94062 5.29 11.1932 6.73999 12.09C7.44033 12.5379 8.01525 13.1565 8.41062 13.8877C8.80598 14.6189 9.00879 15.4388 9 16.27V21.54L15 20.54V16.25C14.9912 15.4188 15.194 14.599 15.5894 13.8677C15.9847 13.1365 16.5597 12.5178 17.26 12.07C18.7071 11.175 19.9019 9.92554 20.7314 8.43988C21.5608 6.95422 21.9975 5.28153 22 3.58002Z"
+                stroke="#606060" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+          </svg>
+          <span class="text-l font-semibold text-gray-600">Filter</span>
+        </div>
+
+        <div class="w-1/4">
+          <div class="relative mt-1">
+            <button type="button" (click)="statusFilter = !statusFilter"
+              class="relative w-full py-3 pl-3 pr-10 text-left bg-white rounded-md ring-1 ring-blue-200 cursor-default focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+              <span class="flex items-center">
+                <span class="block truncate">
+                  Status
+                </span>
+              </span>
+              <span class="absolute inset-y-0 right-0 flex items-center pr-2 ml-3 pointer-events-none">
+                <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                  fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                    clip-rule="evenodd">
+                  </path>
+                </svg>
+              </span>
+            </button>
+            @if (statusFilter) {
+            <div class="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg">
+              <ul tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-item-3"
+                class="py-1 overflow-auto text-base rounded-md max-h-56 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                <li id="listbox-item-0" role="option"
+                  class="relative py-2 pl-3 text-gray-900 cursor-default select-none hover:bg-blue-500 hover:text-white pr-9">
+                  <div class="flex items-center">
+                    <span class="block ml-3 font-normal truncate">
+                      To Do
+                    </span>
+                  </div>
+                  <span class="absolute inset-y-0 right-0 flex items-center pr-4">
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                      aria-hidden="true">
+                      <path fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd">
+                      </path>
+                    </svg>
+                  </span>
+                </li>
+                <li id="listbox-item-1" role="option"
+                  class="relative py-2 pl-3 text-gray-900 cursor-default select-none hover:bg-blue-500 hover:text-white pr-9">
+                  <div class="flex items-center">
+                    <span class="block ml-3 font-normal truncate">
+                      In progress
+                    </span>
+                  </div>
+                </li>
+                <li id="listbox-item-1" role="option"
+                  class="relative py-2 pl-3 text-gray-900 cursor-default select-none hover:bg-blue-500 hover:text-white pr-9">
+                  <div class="flex items-center">
+                    <span class="block ml-3 font-normal truncate">
+                      Done
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            }
+          </div>
+        </div>
+        <div class="w-1/4">
+          <div class="relative mt-1">
+            <button type="button" (click)="priorityFilter = !priorityFilter"
+              class="relative w-full py-3 pl-3 pr-10 text-left bg-white rounded-md ring-1 ring-blue-200 cursor-default focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+              <span class="flex items-center">
+                <span class="block truncate">
+                  Priority
+                </span>
+              </span>
+              <span class="absolute inset-y-0 right-0 flex items-center pr-2 ml-3 pointer-events-none">
+                <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                  fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                    clip-rule="evenodd">
+                  </path>
+                </svg>
+              </span>
+            </button>
+            @if (priorityFilter) {
+            <div class="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg">
+              <ul tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-item-3"
+                class="py-1 overflow-auto text-base rounded-md max-h-56 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                <li id="listbox-item-0" role="option"
+                  class="relative py-2 pl-3 text-gray-900 cursor-default select-none hover:bg-blue-500 hover:text-white pr-9">
+                  <div class="flex items-center">
+                    <span class="block ml-3 font-normal truncate">
+                      High
+                    </span>
+                  </div>
+                  <span class="absolute inset-y-0 right-0 flex items-center pr-4">
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                      aria-hidden="true">
+                      <path fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd">
+                      </path>
+                    </svg>
+                  </span>
+                </li>
+                <li id="listbox-item-1" role="option"
+                  class="relative py-2 pl-3 text-gray-900 cursor-default select-none hover:bg-blue-500 hover:text-white pr-9">
+                  <div class="flex items-center">
+                    <span class="block ml-3 font-normal truncate">
+                      Medium
+                    </span>
+                  </div>
+                </li>
+                <li id="listbox-item-1" role="option"
+                  class="relative py-2 pl-3 text-gray-900 cursor-default select-none hover:bg-blue-500 hover:text-white pr-9">
+                  <div class="flex items-center">
+                    <span class="block ml-3 font-normal truncate">
+                      Low
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+      <div class="relative flex items-center justify-end w-full p-1 ml-5 mr-4 sm:mr-0 sm:right-auto">
+        <div class="w-1/2">
+          <div class="relative mt-1">
+            <button type="button" (click)="sortToggle = !sortToggle"
+              class="relative w-full py-3 pl-3 pr-10 text-left bg-white rounded-md ring-1 ring-blue-200 cursor-default focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+              <span class="flex items-center">
+                <span class="block truncate">
+                  Sort By
+                </span>
+              </span>
+              <span class="absolute inset-y-0 right-0 flex items-center pr-2 ml-3 pointer-events-none">
+                <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                  fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                    clip-rule="evenodd">
+                  </path>
+                </svg>
+              </span>
+            </button>
+            @if (sortToggle) {
+            <div class="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg">
+              <ul tabindex="-1" role="listbox" aria-labelledby="listbox-label" aria-activedescendant="listbox-item-3"
+                class="py-1 overflow-auto text-base rounded-md max-h-56 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                <li id="listbox-item-0" role="option"
+                  class="relative py-2 pl-3 text-gray-900 cursor-default select-none hover:bg-blue-500 hover:text-white pr-9">
+                  <div class="flex items-center">
+                    <span class="block ml-3 font-normal truncate">
+                      Due Date (Soonest First)
+                    </span>
+                  </div>
+                  <span class="absolute inset-y-0 right-0 flex items-center pr-4">
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                      aria-hidden="true">
+                      <path fill-rule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd">
+                      </path>
+                    </svg>
+                  </span>
+                </li>
+                <li id="listbox-item-1" role="option"
+                  class="relative py-2 pl-3 text-gray-900 cursor-default select-none hover:bg-blue-500 hover:text-white pr-9">
+                  <div class="flex items-center">
+                    <span class="block ml-3 font-normal truncate">
+                      Due Date (Latest First)
+                    </span>
+                  </div>
+                </li>
+                <li id="listbox-item-1" role="option"
+                  class="relative py-2 pl-3 text-gray-900 cursor-default select-none hover:bg-blue-500 hover:text-white pr-9">
+                  <div class="flex items-center">
+                    <span class="block ml-3 font-normal truncate">
+                      Priority (Low to High)
+                    </span>
+                  </div>
+                </li>
+                <li id="listbox-item-1" role="option"
+                  class="relative py-2 pl-3 text-gray-900 cursor-default select-none hover:bg-blue-500 hover:text-white pr-9">
+                  <div class="flex items-center">
+                    <span class="block ml-3 font-normal truncate">
+                      Priority (High to Low)
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

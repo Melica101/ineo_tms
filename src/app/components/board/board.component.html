@@ -1,0 +1,8 @@
+<div class="flex w-full gap-3 p-12">
+  <app-column title="To Do" column="todo" headingColor="text-red-500" [cards]="cards"
+    (updateCards)="setCards($event)"></app-column>
+  <app-column title="In progress" column="doing" headingColor="text-blue-500" [cards]="cards"
+    (updateCards)="setCards($event)"></app-column>
+  <app-column title="Done" column="done" headingColor="text-emerald-500" [cards]="cards"
+    (updateCards)="setCards($event)"></app-column>
+</div>

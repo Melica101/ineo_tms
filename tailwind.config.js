@@ -15,10 +15,15 @@ module.exports = {
   },
   theme: {
     extend: {
-      backgroundImage: (theme) => ({
-        check: "url('/icons/check.svg')",
-        landscape: "url('/images/landscape/2.jpg')",
-      }),
+      colors: {
+        primary: {
+          DEFAULT: '#e82c88', // Primary color
+          200: '#fde7f2'
+        },
+        secondary: {
+          DEFAULT: '#51328a', // Secondary color
+        },
+      },
     },
   },
   variants: {

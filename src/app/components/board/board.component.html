@@ -1,8 +1,46 @@
-<div class="flex w-full gap-3 p-12">
-  <app-column title="To Do" column="todo" headingColor="text-red-500" [cards]="cards"
+<!-- <div class="flex w-full gap-3 px-12 pt-6 pb-12">
+  <app-column title="To Do" column="todo" headingColor="text-red-500" [cards]="tasks"
     (updateCards)="setCards($event)"></app-column>
-  <app-column title="In progress" column="doing" headingColor="text-blue-500" [cards]="cards"
+  <app-column title="In progress" column="doing" headingColor="text-blue-500" [cards]="tasks"
     (updateCards)="setCards($event)"></app-column>
-  <app-column title="Done" column="done" headingColor="text-emerald-500" [cards]="cards"
+  <app-column title="Done" column="done" headingColor="text-emerald-500" [cards]="tasks"
     (updateCards)="setCards($event)"></app-column>
+</div> -->
+
+<div class="flex space-x-4 p-4">
+  <!-- To Do Column -->
+  <div class="w-1/3">
+    <h3 class="text-xl font-bold mb-4">To Do</h3>
+    <div cdkDropList id="todo" class="bg-gray-200 p-4 rounded-lg" [cdkDropListData]="todo"
+      (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['doing', 'done']">
+      <div class="overflow-hidden" *ngFor="let task of todo" cdkDrag (click)="openTaskDetails(task)">
+        <app-card [task]="task"></app-card>
+      </div>
+    </div>
+  </div>
+
+  <!-- In Progress Column -->
+  <div class="w-1/3">
+    <h3 class="text-xl font-bold mb-4">In Progress</h3>
+    <div cdkDropList id="doing" class="bg-gray-200 p-4 rounded-lg" [cdkDropListData]="doing"
+      (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['todo', 'done']">
+      <div class="overflow-hidden" *ngFor="let task of doing" cdkDrag (click)="openTaskDetails(task)">
+        <app-card [task]="task"></app-card>
+      </div>
+    </div>
+  </div>
+
+  <!-- Done Column -->
+  <div class="w-1/3">
+    <h3 class="text-xl font-bold mb-4">Done</h3>
+    <div cdkDropList id="done" class="bg-gray-200 p-4 rounded-lg" [cdkDropListData]="done"
+      (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['todo', 'doing']">
+      <div class="overflow-hidden" *ngFor="let task of done" cdkDrag (click)="openTaskDetails(task)">
+        <app-card [task]="task"></app-card>
+      </div>
+    </div>
+  </div>
 </div>
+
+<app-task-details *ngIf="showModal" [task]="selectedTask!" (saveTask)="saveTask($event)"
+  (closeModal)="closeModal()"></app-task-details>

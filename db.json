@@ -1,0 +1,94 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Look into render bug in dashboard",
+      "description": "Description for Task 1",
+      "status": "todo",
+      "priority": "high",
+      "dueDate": "2024-08-30",
+      "order": 4
+    },
+    {
+      "id": "2",
+      "title": "SOX compliance checklist",
+      "description": "<p>Description for Task SOX</p>",
+      "status": "doing",
+      "priority": "Low",
+      "dueDate": "2024-09-17",
+      "order": 7
+    },
+    {
+      "id": "3",
+      "title": "[SPIKE] Migrate to Azure",
+      "description": "Description for Task 2",
+      "status": "todo",
+      "priority": "medium",
+      "dueDate": "2024-09-15",
+      "order": 3
+    },
+    {
+      "id": "4",
+      "title": "Document Notifications service",
+      "description": "Description for Task 2",
+      "status": "doing",
+      "priority": "medium",
+      "dueDate": "2024-09-15",
+      "order": 2
+    },
+    {
+      "id": "5",
+      "title": "Research DB options for new microservice",
+      "description": "Description for Task 2",
+      "status": "todo",
+      "priority": "medium",
+      "dueDate": "2024-09-15",
+      "order": 5
+    },
+    {
+      "id": "6",
+      "title": "Postmortem for outage",
+      "description": "Description for Task 2",
+      "status": "doing",
+      "priority": "low",
+      "dueDate": "2024-09-15",
+      "order": 6
+    },
+    {
+      "id": "7",
+      "title": "Sync with product on Q3 roadmap",
+      "description": "<p>Description for Task 6</p>",
+      "status": "done",
+      "priority": "medium",
+      "dueDate": "2024-09-15",
+      "order": 3
+    },
+    {
+      "id": "8",
+      "title": "Refactor context providers to use Zustand",
+      "description": "Description for Task 2",
+      "status": "doing",
+      "priority": "high",
+      "dueDate": "2024-09-15",
+      "order": 5
+    },
+    {
+      "id": "9",
+      "title": "Add logging to daily CRON",
+      "description": "Description for Task 9",
+      "status": "done",
+      "priority": "medium",
+      "dueDate": "2024-09-15",
+      "order": 7
+    },
+    {
+      "id": "10",
+      "title": "Set up DD dashboards for Lambda listener",
+      "description": "Description for Task 10",
+      "status": "done",
+      "priority": "medium",
+      "dueDate": "2024-09-15",
+      "order": 8
+    }
+  ]
+}

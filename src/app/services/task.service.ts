@@ -22,7 +22,7 @@ export class TaskService {
   constructor(private http: HttpClient) {}
 
   // CREATE a new task
-  createTask(task: Task): Observable<Task> {
+  createTask(task: Partial<Task>): Observable<Task> {
     return this.http.post<Task>(this.apiUrl, task);
   }
 

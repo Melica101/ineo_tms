@@ -218,9 +218,11 @@
         </div>
       </div>
       <div class="flex justify-end w-1/3">
-        <button (click)="showModal=true" class="flex items-center border border-primary text-primary font-bold py-2 px-4 rounded shadow-md hover:bg-secondary hover:border-secondary hover:text-white transition-colors">
+        <button (click)="showAddTaskModal=true"
+          class="flex items-center border border-primary text-primary font-bold py-2 px-4 rounded shadow-md hover:bg-secondary hover:border-secondary hover:text-white transition-colors">
           <!-- SVG Icon -->
-          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
           </svg>
           Add Task
@@ -230,6 +232,6 @@
   </div>
 </header>
 
-@if(showModal){
-  <app-add-task (taskAdded)="handleTaskAdded($event)" (modalClosed)="showModal = false"></app-add-task>
+@if(showAddTaskModal){
+<app-add-task (saveTask)="addTask($event)" (closeModal)="closeModal()"></app-add-task>
 }

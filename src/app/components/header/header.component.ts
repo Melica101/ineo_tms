@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { AddTaskComponent } from '../add-task/add-task.component';
+import { Task, TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'app-header',
@@ -12,11 +13,21 @@ export class HeaderComponent {
   statusFilter = false;
   priorityFilter = false;
   sortToggle = false;
-  showModal = false;
+  showAddTaskModal = false;
 
-  handleTaskAdded(task: { title: string; description: string }) {
-    console.log('Task Added:', task);
-    this.showModal = false;
-    // Handle the added task (e.g., push to a tasks array)
+  @Output() taskCreated = new EventEmitter<Partial<Task>>();
+
+  openAddTaskModal(): void {
+    this.showAddTaskModal = true;
   }
+
+  addTask(newTask: Partial<Task>): void {
+    this.taskCreated.emit(newTask);
+    this.closeModal();
+  }
+
+  closeModal(): void {
+    this.showAddTaskModal = false;
+  }
+
 }

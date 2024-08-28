@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from '../card/card.component';
 import { Task, TaskService } from '../../services/task.service';
@@ -6,48 +6,27 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
 import { TaskDetailsComponent } from '../task-details/task-details.component';
+import { DeleteModalComponent } from '../delete-modal/delete-modal.component';
 
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [CommonModule, CardComponent, DragDropModule, FormsModule, TaskDetailsComponent],
+  imports: [CommonModule, CardComponent, DragDropModule, FormsModule, TaskDetailsComponent, DeleteModalComponent],
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent {
-  // tasks: Task[] = [];
-
-  // constructor(private taskService: TaskService) {}
-
-  // ngOnInit(): void {
-  //   this.loadTasks();
-  // }
-
-  // loadTasks(): void {
-  //   this.taskService.getTasks().subscribe(
-  //     (data) => {
-  //       this.tasks = data;
-  //     },
-  //     (error) => {
-  //       console.error('Failed to fetch tasks', error);
-  //     }
-  //   );
-  // }
-
-  // setCards(updatedCards: any[]) {
-  //   this.tasks = updatedCards;
-  // }
   todo: Task[] = [];
   doing: Task[] = [];
   done: Task[] = [];
 
-  newTaskTitle = '';
-  newTaskDescription = '';
-  newTaskPriority: 'low' | 'medium' | 'high' = 'medium'; // Default priority
-  newTaskDueDate = ''; // Due date as a string in ISO format
-  editingTask: Task | null = null;
   showModal = false;
   selectedTask: Task | null = null;
+  taskToView: Task | null = null;
+  taskToDelete: Task | null = null;
+  showDeleteConfirmation = false;
+
+  @Input() newTask: Task | null = null;
 
   constructor(private taskService: TaskService) {}
 
@@ -63,32 +42,22 @@ export class BoardComponent {
     });
   }
 
-  addTask(status: 'todo' | 'doing' | 'done'): void {
-    if (this.newTaskTitle && this.newTaskDescription) {
-      const newTask: Task = {
-        id: 0, // This will be set by the server
-        title: this.newTaskTitle,
-        description: this.newTaskDescription,
-        status,
-        priority: this.newTaskPriority,
-        dueDate: this.newTaskDueDate,
-        order: this.taskService.generateNewTaskOrder(
-          status === 'todo' ? this.todo : status === 'doing' ? this.doing : this.done
-        ),
-      };
+  handleTaskCreated(newTask: Partial<Task>): void {
+    const taskToCreate: Partial<Task> = {
+      ...newTask,
+      order: this.taskService.generateNewTaskOrder(this.todo),
+      status: 'todo'  // Assuming new tasks start in the "To Do" column
+    };
 
-      this.taskService.createTask(newTask).subscribe(() => {
-        this.loadTasks();
-        this.newTaskTitle = '';
-        this.newTaskDescription = '';
-        this.newTaskPriority = 'medium';
-        this.newTaskDueDate = '';
-      });
-    }
+    // Call the createTask method in the service, which sends a POST request to the backend
+    this.taskService.createTask(taskToCreate).subscribe(() => {
+      // After the task is created, reload the tasks from the server
+      this.loadTasks();
+    });
   }
 
   openTaskDetails(task: Task): void {
-    this.selectedTask = { ...task };
+    this.taskToView = task;
     this.showModal = true;
   }
 
@@ -104,11 +73,23 @@ export class BoardComponent {
     this.selectedTask = null;
   }
 
+  onTaskDeleteRequested(task: Task): void {
+    this.taskToDelete = task;
+    this.showDeleteConfirmation = true;
+  }
 
-  deleteTask(taskId: number): void {
-    this.taskService.deleteTask(taskId).subscribe(() => {
-      this.loadTasks();
-    });
+  deleteTask(): void {
+    if (this.taskToDelete) {
+      this.taskService.deleteTask(this.taskToDelete.id).subscribe(() => {
+        this.loadTasks();
+        this.closeDeleteConfirmation();
+      });
+    }
+  }
+
+  closeDeleteConfirmation(): void {
+    this.showDeleteConfirmation = false;
+    this.taskToDelete = null;
   }
 
   drop(event: CdkDragDrop<Task[]>): void {

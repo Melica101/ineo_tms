@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { QuillModule } from 'ngx-quill';
+import { Task } from '../../services/task.service';
 
 @Component({
   selector: 'app-add-task',
@@ -10,11 +11,17 @@ import { QuillModule } from 'ngx-quill';
   styleUrl: './add-task.component.css'
 })
 export class AddTaskComponent {
-  taskTitle: string = '';
-  taskDescription: string = '';
+  newTask: Partial<Task> = {
+    title: '',
+    description: '',
+    status: 'todo', // Default status
+    order: 0, // This will be set by the board component
+    priority: 'medium', // Default priority
+    dueDate: '', // Default to empty string
+  };
 
-  @Output() taskAdded = new EventEmitter<{ title: string; description: string }>();
-  @Output() modalClosed = new EventEmitter<void>();
+  @Output() saveTask = new EventEmitter<Partial<Task>>();
+  @Output() closeModal = new EventEmitter<void>();
 
   editorModules = {
     toolbar: [
@@ -27,17 +34,13 @@ export class AddTaskComponent {
     ]
   };
 
-  addTask() {
-    if (this.taskTitle && this.taskDescription) {
-      this.taskAdded.emit({
-        title: this.taskTitle,
-        description: this.taskDescription
-      });
-      this.closeModal();
-    }
+  onSave() {
+    this.saveTask.emit(this.newTask);
   }
 
-  closeModal() {
-    this.modalClosed.emit();
+  onClose() {
+    this.closeModal.emit();
   }
+
+
 }

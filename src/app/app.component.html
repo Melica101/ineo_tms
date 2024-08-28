@@ -3,8 +3,7 @@
     <div class="relative h-full hidden my-4 ml-4 shadow-lg lg:block w-80">
       <div class="h-full bg-white rounded-2xl dark:bg-gray-700">
         <div class="flex items-center justify-center pt-6">
-          <h1
-            class="font-extrabold text-2xl rounded-xl px-2 text-white bg-gradient-to-r from-primary to-secondary">
+          <h1 class="font-extrabold text-2xl rounded-xl px-2 text-white bg-gradient-to-r from-primary to-secondary">
             INEO TMS</h1>
         </div>
         <app-navbar></app-navbar>
@@ -12,15 +11,14 @@
     </div>
 
     <div class="flex flex-col w-full pl-0 md:p-4 md:space-y-4">
-      <app-header></app-header>
+      <app-header (taskCreated)="taskBoard.handleTaskCreated($event)"></app-header>
       <div class="h-screen pt-2 pb-12 pl-2 pr-2 overflow-scroll md:pt-0 md:pr-0 md:pl-0">
         <div class="flex flex-col flex-wrap sm:flex-row ">
           <div class="w-full">
-            <app-board></app-board>
+            <app-board #taskBoard></app-board>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </main>

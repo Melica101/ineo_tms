@@ -1,40 +1,31 @@
 {
   "tasks": [
     {
-      "id": "1",
-      "title": "Look into render bug in dashboard",
-      "description": "Description for Task 1",
-      "status": "todo",
-      "priority": "high",
-      "dueDate": "2024-08-30",
-      "order": 4
-    },
-    {
       "id": "2",
       "title": "SOX compliance checklist",
       "description": "<p>Description for Task SOX</p>",
-      "status": "doing",
+      "status": "todo",
       "priority": "Low",
       "dueDate": "2024-09-17",
-      "order": 7
+      "order": 8
     },
     {
       "id": "3",
       "title": "[SPIKE] Migrate to Azure",
-      "description": "Description for Task 2",
-      "status": "todo",
+      "description": "<p>Description for Task spike</p>",
+      "status": "done",
       "priority": "medium",
       "dueDate": "2024-09-15",
-      "order": 3
+      "order": 9
     },
     {
       "id": "4",
       "title": "Document Notifications service",
       "description": "Description for Task 2",
-      "status": "doing",
+      "status": "todo",
       "priority": "medium",
       "dueDate": "2024-09-15",
-      "order": 2
+      "order": 9
     },
     {
       "id": "5",
@@ -52,25 +43,25 @@
       "status": "doing",
       "priority": "low",
       "dueDate": "2024-09-15",
-      "order": 6
+      "order": 3
     },
     {
       "id": "7",
       "title": "Sync with product on Q3 roadmap",
       "description": "<p>Description for Task 6</p>",
-      "status": "done",
+      "status": "doing",
       "priority": "medium",
       "dueDate": "2024-09-15",
-      "order": 3
+      "order": 1
     },
     {
       "id": "8",
       "title": "Refactor context providers to use Zustand",
       "description": "Description for Task 2",
-      "status": "doing",
-      "priority": "high",
+      "status": "todo",
+      "priority": "low",
       "dueDate": "2024-09-15",
-      "order": 5
+      "order": 6
     },
     {
       "id": "9",

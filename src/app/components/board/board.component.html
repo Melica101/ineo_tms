@@ -10,37 +10,39 @@
 <div class="flex space-x-4 p-4">
   <!-- To Do Column -->
   <div class="w-1/3">
-    <h3 class="text-xl font-bold mb-4">To Do</h3>
+    <h3 class="text-xl font-bold mb-4 text-red-500">To Do</h3>
     <div cdkDropList id="todo" class="bg-gray-200 p-4 rounded-lg" [cdkDropListData]="todo"
       (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['doing', 'done']">
       <div class="overflow-hidden" *ngFor="let task of todo" cdkDrag (click)="openTaskDetails(task)">
-        <app-card [task]="task"></app-card>
+        <app-card [task]="task" (openDetails)="openTaskDetails($event)" (deleteTask)="onTaskDeleteRequested($event)"></app-card>
       </div>
     </div>
   </div>
 
   <!-- In Progress Column -->
   <div class="w-1/3">
-    <h3 class="text-xl font-bold mb-4">In Progress</h3>
+    <h3 class="text-xl font-bold mb-4 text-blue-500">In Progress</h3>
     <div cdkDropList id="doing" class="bg-gray-200 p-4 rounded-lg" [cdkDropListData]="doing"
       (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['todo', 'done']">
       <div class="overflow-hidden" *ngFor="let task of doing" cdkDrag (click)="openTaskDetails(task)">
-        <app-card [task]="task"></app-card>
+        <app-card [task]="task" (deleteTask)="onTaskDeleteRequested($event)"></app-card>
       </div>
     </div>
   </div>
 
   <!-- Done Column -->
   <div class="w-1/3">
-    <h3 class="text-xl font-bold mb-4">Done</h3>
+    <h3 class="text-xl font-bold mb-4 text-emerald-500">Done</h3>
     <div cdkDropList id="done" class="bg-gray-200 p-4 rounded-lg" [cdkDropListData]="done"
       (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['todo', 'doing']">
       <div class="overflow-hidden" *ngFor="let task of done" cdkDrag (click)="openTaskDetails(task)">
-        <app-card [task]="task"></app-card>
+        <app-card [task]="task" (deleteTask)="onTaskDeleteRequested($event)"></app-card>
       </div>
     </div>
   </div>
 </div>
 
-<app-task-details *ngIf="showModal" [task]="selectedTask!" (saveTask)="saveTask($event)"
+<app-task-details *ngIf="showModal" [task]="taskToView!" (saveTask)="saveTask($event)"
   (closeModal)="closeModal()"></app-task-details>
+<app-delete-modal *ngIf="showDeleteConfirmation" (confirm)="deleteTask()"
+  (cancel)="closeDeleteConfirmation()"></app-delete-modal>

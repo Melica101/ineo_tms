@@ -1,5 +1,4 @@
-
-<div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+<div class="fixed inset-0 z-50 p-2 sm:p-0 flex items-center justify-center bg-black bg-opacity-50">
   <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg">
     <h3 class="text-xl font-bold mb-4 text-secondary">Task Details</h3>
 
@@ -10,7 +9,8 @@
 
     <div class="mb-4">
       <label class="block text-sm font-medium text-gray-700">Description</label>
-      <quill-editor [(ngModel)]="task.description" class="mt-1 block w-full border border-gray-300 rounded-md p-2" [modules]="editorModules"></quill-editor>
+      <quill-editor [(ngModel)]="task.description" class="mt-1 block w-full py-2" [modules]="editorModules"
+        style="height: 180px; max-height: 180px; overflow-y: auto; word-wrap: break-word; white-space: pre-wrap;"></quill-editor>
     </div>
 
     <div class="mb-4">
@@ -33,4 +33,3 @@
     </div>
   </div>
 </div>
-

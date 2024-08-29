@@ -1,89 +1,94 @@
-<nav class="px-6">
-  <div>
-    <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 mt-10 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-800 dark:text-gray-100 rounded-lg bg-gray-100 dark:bg-gray-600"
-      href="#">
-      <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-        <g id="SVGRepo_iconCarrier">
-          <path opacity="0.4" d="M12.3691 8.87988H17.6191" stroke="#696969" stroke-width="1.5" stroke-linecap="round"
-            stroke-linejoin="round"></path>
-          <path opacity="0.4" d="M6.38086 8.87988L7.13086 9.62988L9.38086 7.37988" stroke="#696969" stroke-width="1.5"
-            stroke-linecap="round" stroke-linejoin="round"></path>
-          <path opacity="0.4" d="M12.3691 15.8799H17.6191" stroke="#696969" stroke-width="1.5" stroke-linecap="round"
-            stroke-linejoin="round"></path>
-          <path opacity="0.4" d="M6.38086 15.8799L7.13086 16.6299L9.38086 14.3799" stroke="#696969" stroke-width="1.5"
-            stroke-linecap="round" stroke-linejoin="round"></path>
-          <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#696969"
-            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-        </g>
-      </svg>
-      <span class="mx-4 text-base font-normal">
-        Tasks
-      </span>
-      <span class="flex-grow text-right">
-      </span>
-    </a>
-    <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg "
-      href="#">
-      <svg width="20px" height="20px" viewBox="-3 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
-        fill="#000000">
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-        <g id="SVGRepo_iconCarrier">
-          <title>stats</title>
-          <desc>Created with Sketch Beta.</desc>
-          <defs> </defs>
-          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-            <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-314.000000, -673.000000)"
-              fill="#666666">
-              <path
-                d="M328,673 L326,673 C324.896,673 324,673.896 324,675 L324,703 C324,704.104 324.896,705 326,705 L328,705 C329.104,705 330,704.104 330,703 L330,675 C330,673.896 329.104,673 328,673 L328,673 Z M338,689 L336,689 C334.896,689 334,689.896 334,691 L334,703 C334,704.104 334.896,705 336,705 L338,705 C339.104,705 340,704.104 340,703 L340,691 C340,689.896 339.104,689 338,689 L338,689 Z M318,682 L316,682 C314.896,682 314,682.896 314,684 L314,703 C314,704.104 314.896,705 316,705 L318,705 C319.104,705 320,704.104 320,703 L320,684 C320,682.896 319.104,682 318,682 L318,682 Z"
-                id="stats" sketch:type="MSShapeGroup"> </path>
+<div
+  [ngClass]="{'block': isOpen, 'hidden': !isOpen, 'xl:block': true }"
+  class="fixed xl:relative z-40 inset-y-0 left-0 w-64 transform lg:transform-none bg-white dark:bg-gray-700 shadow-lg transition-transform duration-300 ease-in-out rounded-2xl h-full overflow-y-auto">
+  <div class="flex items-center justify-center pt-6">
+    <h1 class="font-extrabold text-2xl rounded-xl px-2 text-white bg-gradient-to-r from-primary to-secondary">
+      INEO TMS
+    </h1>
+  </div>
+  <nav class="px-6">
+    <div>
+      <a [routerLink]="['/tasks']" routerLinkActive="router-link-active"
+        [ngClass]="{
+          'bg-gray-100 text-gray-800': isActive('/tasks') && !isDarkMode,
+          'bg-gray-600 text-gray-100': isActive('/tasks') && isDarkMode,
+          'text-gray-600': !isActive('/tasks') && !isDarkMode,
+          'text-gray-400': !isActive('/tasks') && isDarkMode
+        }"
+        class="flex items-center p-2 mt-10 transition-colors rounded-lg">
+        <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path opacity="0.4" d="M12.3691 8.87988H17.6191" stroke="#696969" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"></path>
+            <path opacity="0.4" d="M6.38086 8.87988L7.13086 9.62988L9.38086 7.37988" stroke="#696969"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path opacity="0.4" d="M12.3691 15.8799H17.6191" stroke="#696969" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"></path>
+            <path opacity="0.4" d="M6.38086 15.8799L7.13086 16.6299L9.38086 14.3799" stroke="#696969"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z"
+              stroke="#696969" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </g>
+        </svg>
+        <span class="mx-4 text-base font-normal">Tasks</span>
+        <span class="flex-grow text-right"></span>
+      </a>
+      <a [routerLink]="['/statistics']" routerLinkActive="router-link-active"
+        class="flex items-center p-2 my-6 transition-colors rounded-lg"
+        [ngClass]="{
+          'bg-gray-100 text-gray-800': isActive('/statistics') && !isDarkMode,
+          'bg-gray-600 text-gray-100': isActive('/statistics') && isDarkMode,
+          'text-gray-600': !isActive('/statistics') && !isDarkMode,
+          'text-gray-400': !isActive('/statistics') && isDarkMode
+        }">
+        <svg width="20px" height="20px" viewBox="-3 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+          fill="#000000">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <title>stats</title>
+            <desc>Created with Sketch Beta.</desc>
+            <defs> </defs>
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+              <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-314.000000, -673.000000)"
+                fill="#666666">
+                <path
+                  d="M328,673 L326,673 C324.896,673 324,673.896 324,675 L324,703 C324,704.104 324.896,705 326,705 L328,705 C329.104,705 330,704.104 330,703 L330,675 C330,673.896 329.104,673 328,673 L328,673 Z M338,689 L336,689 C334.896,689 334,689.896 334,691 L334,703 C334,704.104 334.896,705 336,705 L338,705 C339.104,705 340,704.104 340,703 L340,691 C340,689.896 339.104,689 338,689 L338,689 Z M318,682 L316,682 C314.896,682 314,682.896 314,684 L314,703 C314,704.104 314.896,705 316,705 L318,705 C319.104,705 320,704.104 320,703 L320,684 C320,682.896 319.104,682 318,682 L318,682 Z"
+                  id="stats" sketch:type="MSShapeGroup"> </path>
+              </g>
             </g>
           </g>
-        </g>
-      </svg>
-      <span class="mx-4 text-base font-normal">
-        Statistics
-      </span>
-    </a>
-    <a class="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg "
-      href="#" (click)="lightmode=!lightmode">
-      @if (lightmode) {
-      <svg width="20px" height="20px" fill="#5e5e5e" viewBox="0 0 35 35" data-name="Layer 2" id="Layer_2"
-        xmlns="http://www.w3.org/2000/svg" stroke="#5e5e5e">
-        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-        <g id="SVGRepo_iconCarrier">
+        </svg>
+        <span class="mx-4 text-base font-normal">Statistics</span>
+      </a>
+      <a class="cursor-pointer flex items-center p-2 transition-colors duration-200 text-gray-600 dark:text-gray-400 rounded-lg"
+        (click)="toggleDarkMode()">
+        <svg *ngIf="!isDarkMode" width="20px" height="20px" fill="#5e5e5e" viewBox="0 0 35 35" data-name="Layer 2"
+          id="Layer_2" xmlns="http://www.w3.org/2000/svg" stroke="#5e5e5e">
           <path
             d="M18.44,34.68a18.22,18.22,0,0,1-2.94-.24,18.18,18.18,0,0,1-15-20.86A18.06,18.06,0,0,1,9.59.63,2.42,2.42,0,0,1,12.2.79a2.39,2.39,0,0,1,1,2.41L11.9,3.1l1.23.22A15.66,15.66,0,0,0,23.34,21h0a15.82,15.82,0,0,0,8.47.53A2.44,2.44,0,0,1,34.47,25,18.18,18.18,0,0,1,18.44,34.68ZM10.67,2.89a15.67,15.67,0,0,0-5,22.77A15.66,15.66,0,0,0,32.18,24a18.49,18.49,0,0,1-9.65-.64A18.18,18.18,0,0,1,10.67,2.89Z">
           </path>
-        </g>
-      </svg>
-      <span class="mx-4 text-base font-normal">
-        Dark Mode
-      </span>
-      } @else {
-      <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <g clip-path="url(#a)" stroke="#606060" stroke-width="1.5" stroke-miterlimit="10">
-          <path
-            d="M5 12H1M23 12h-4M7.05 7.05 4.222 4.222M19.778 19.778 16.95 16.95M7.05 16.95l-2.828 2.828M19.778 4.222 16.95 7.05"
-            stroke-linecap="round" />
-          <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" fill="#000000" fill-opacity=".16" />
-          <path d="M12 19v4M12 1v4" stroke-linecap="round" />
-        </g>
-        <defs>
-          <clipPath id="a">
-            <path fill="#ffffff" d="M0 0h24v24H0z" />
-          </clipPath>
-        </defs>
-      </svg>
-      <span class="mx-4 text-base font-normal">
-        Light Mode
-      </span>
-      }
-    </a>
-  </div>
-</nav>
+        </svg>
+        <svg *ngIf="isDarkMode" width="20px" height="20px" viewBox="0 0 24 24" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#a)" stroke="#606060" stroke-width="1.5" stroke-miterlimit="10">
+            <path
+              d="M5 12H1M23 12h-4M7.05 7.05 4.222 4.222M19.778 19.778 16.95 16.95M7.05 16.95l-2.828 2.828M19.778 4.222 16.95 7.05"
+              stroke-linecap="round" />
+            <path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" fill="#000000" fill-opacity=".16" />
+            <path d="M12 19v4M12 1v4" stroke-linecap="round" />
+          </g>
+          <defs>
+            <clipPath id="a">
+              <path fill="#ffffff" d="M0 0h24v24H0z" />
+            </clipPath>
+          </defs>
+        </svg>
+        <span class="mx-4 text-base font-normal">{{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}</span>
+      </a>
+    </div>
+  </nav>
+</div>

@@ -6,26 +6,26 @@
       "description": "<p>Description for Task SOX</p>",
       "status": "todo",
       "priority": "low",
-      "dueDate": "2024-09-17",
-      "order": 1
+      "dueDate": "2024-08-06",
+      "order": 2
     },
     {
       "id": "3",
       "title": "[SPIKE] Migrate to Azure",
-      "description": "<p>Description for Task spike</p>",
-      "status": "done",
+      "description": "<p class=\"ql-align-center\"><strong>Description for Task spike</strong></p>",
+      "status": "todo",
       "priority": "medium",
       "dueDate": "2024-09-15",
-      "order": 9
+      "order": 10
     },
     {
       "id": "4",
       "title": "Document Notifications service",
       "description": "Description for Task 2",
-      "status": "todo",
-      "priority": "medium",
+      "status": "doing",
+      "priority": "high",
       "dueDate": "2024-09-15",
-      "order": 3
+      "order": 2
     },
     {
       "id": "5",
@@ -34,7 +34,7 @@
       "status": "doing",
       "priority": "medium",
       "dueDate": "2024-09-15",
-      "order": 6
+      "order": 3
     },
     {
       "id": "6",
@@ -43,25 +43,25 @@
       "status": "done",
       "priority": "low",
       "dueDate": "2024-09-15",
-      "order": 12
+      "order": 3
     },
     {
       "id": "7",
       "title": "Sync with product on Q3 roadmap",
       "description": "<p>Description for Task 6</p>",
-      "status": "todo",
+      "status": "done",
       "priority": "medium",
       "dueDate": "2024-09-15",
-      "order": 4
+      "order": 8
     },
     {
       "id": "8",
       "title": "Refactor context providers to use Zustand",
       "description": "Description for Task 2",
-      "status": "doing",
+      "status": "todo",
       "priority": "low",
       "dueDate": "2024-09-15",
-      "order": 7
+      "order": 8
     },
     {
       "id": "9",
@@ -79,7 +79,16 @@
       "status": "done",
       "priority": "medium",
       "dueDate": "2024-09-15",
-      "order": 8
+      "order": 6
+    },
+    {
+      "id": "034b",
+      "title": "Add drag and drop",
+      "description": "<ol><li>Drag</li><li>drop</li></ol>",
+      "status": "done",
+      "order": 2,
+      "priority": "high",
+      "dueDate": "2024-08-30"
     }
   ]
 }

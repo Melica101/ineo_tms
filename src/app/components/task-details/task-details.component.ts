@@ -22,8 +22,7 @@ export class TaskDetailsComponent {
       ['bold', 'italic', 'underline'],
       ['link', 'image'],
       [{ list: 'ordered' }, { list: 'bullet' }],
-      [{ 'align': [] }],
-      ['clean']
+      [{ 'align': [] }]
     ]
   };
 

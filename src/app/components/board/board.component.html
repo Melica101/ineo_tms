@@ -1,17 +1,8 @@
-<!-- <div class="flex w-full gap-3 px-12 pt-6 pb-12">
-  <app-column title="To Do" column="todo" headingColor="text-red-500" [cards]="tasks"
-    (updateCards)="setCards($event)"></app-column>
-  <app-column title="In progress" column="doing" headingColor="text-blue-500" [cards]="tasks"
-    (updateCards)="setCards($event)"></app-column>
-  <app-column title="Done" column="done" headingColor="text-emerald-500" [cards]="tasks"
-    (updateCards)="setCards($event)"></app-column>
-</div> -->
-
-<div class="flex space-x-4 p-4">
+<div class="flex flex-col lg:flex-row lg:space-x-4 space-y-4 lg:space-y-0 sm:px-0 mb-4">
   <!-- To Do Column -->
-  <div class="w-1/3">
+  <div class="w-full lg:w-1/3">
     <h3 class="text-xl font-bold mb-4 text-red-500">To Do</h3>
-    <div cdkDropList id="todo" class="bg-gray-200 p-4 rounded-lg" [cdkDropListData]="todo"
+    <div cdkDropList id="todo" class="bg-gray-200 dark:bg-gray-600 p-4 rounded-lg" [cdkDropListData]="todo"
       (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['doing', 'done']">
       @if (!loading) {
       <div class="overflow-hidden" *ngFor="let task of todo" cdkDrag (click)="openTaskDetails(task)">
@@ -20,15 +11,12 @@
       </div>
       } @else {
       <div class="mb-4">
-        <div class="w-full bg-white shadow-lg rounded-2xl">
-          <div class="p-3 h-">
+        <div class="w-full bg-white dark:bg-gray-700 shadow-lg rounded-2xl">
+          <div class="p-3">
             <div class="grid grid-cols-2 gap-4 mt-2">
-              <div class="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
-              </div>
-              <div class="h-8 bg-gray-200 rounded animate-pulse">
-              </div>
-              <div class="h-8 bg-gray-200 rounded  animate-pulse">
-              </div>
+              <div class="h-8 col-span-2 bg-gray-200 rounded animate-pulse"></div>
+              <div class="h-8 bg-gray-200 rounded animate-pulse"></div>
+              <div class="h-8 bg-gray-200 rounded animate-pulse"></div>
             </div>
           </div>
         </div>
@@ -38,9 +26,9 @@
   </div>
 
   <!-- In Progress Column -->
-  <div class="w-1/3">
+  <div class="w-full lg:w-1/3">
     <h3 class="text-xl font-bold mb-4 text-blue-500">In Progress</h3>
-    <div cdkDropList id="doing" class="bg-gray-200 p-4 rounded-lg" [cdkDropListData]="doing"
+    <div cdkDropList id="doing" class="bg-gray-200 dark:bg-gray-600 p-4 rounded-lg" [cdkDropListData]="doing"
       (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['todo', 'done']">
       @if (!loading) {
       <div class="overflow-hidden" *ngFor="let task of doing" cdkDrag (click)="openTaskDetails(task)">
@@ -48,15 +36,12 @@
       </div>
       } @else {
       <div class="mb-4">
-        <div class="w-full bg-white shadow-lg rounded-2xl">
-          <div class="p-3 h-">
+        <div class="w-full bg-white dark:bg-gray-700 shadow-lg rounded-2xl">
+          <div class="p-3">
             <div class="grid grid-cols-2 gap-4 mt-2">
-              <div class="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
-              </div>
-              <div class="h-8 bg-gray-200 rounded animate-pulse">
-              </div>
-              <div class="h-8 bg-gray-200 rounded  animate-pulse">
-              </div>
+              <div class="h-8 col-span-2 bg-gray-200 rounded animate-pulse"></div>
+              <div class="h-8 bg-gray-200 rounded animate-pulse"></div>
+              <div class="h-8 bg-gray-200 rounded animate-pulse"></div>
             </div>
           </div>
         </div>
@@ -66,9 +51,9 @@
   </div>
 
   <!-- Done Column -->
-  <div class="w-1/3">
+  <div class="w-full lg:w-1/3">
     <h3 class="text-xl font-bold mb-4 text-emerald-500">Done</h3>
-    <div cdkDropList id="done" class="bg-gray-200 p-4 rounded-lg" [cdkDropListData]="done"
+    <div cdkDropList id="done" class="bg-gray-200 dark:bg-gray-600 p-4 rounded-lg" [cdkDropListData]="done"
       (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['todo', 'doing']">
       @if (!loading) {
       <div class="overflow-hidden" *ngFor="let task of done" cdkDrag (click)="openTaskDetails(task)">
@@ -76,15 +61,12 @@
       </div>
       } @else {
       <div class="mb-4">
-        <div class="w-full bg-white shadow-lg rounded-2xl">
-          <div class="p-3 h-">
+        <div class="w-full bg-white dark:bg-gray-700 shadow-lg rounded-2xl">
+          <div class="p-3">
             <div class="grid grid-cols-2 gap-4 mt-2">
-              <div class="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
-              </div>
-              <div class="h-8 bg-gray-200 rounded animate-pulse">
-              </div>
-              <div class="h-8 bg-gray-200 rounded  animate-pulse">
-              </div>
+              <div class="h-8 col-span-2 bg-gray-200 rounded animate-pulse"></div>
+              <div class="h-8 bg-gray-200 rounded animate-pulse"></div>
+              <div class="h-8 bg-gray-200 rounded animate-pulse"></div>
             </div>
           </div>
         </div>

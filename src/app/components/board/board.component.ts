@@ -41,12 +41,12 @@ export class BoardComponent {
   loadTasks(): void {
     this.loading = true;
     this.taskService.getTasks().subscribe(tasks => {
-      this.loading = false;
       this.tasks = tasks;
       this.filteredTasks = tasks;
       this.todo = tasks.filter(task => task.status === 'todo');
       this.doing = tasks.filter(task => task.status === 'doing');
       this.done = tasks.filter(task => task.status === 'done');
+      this.loading = false;
     });
   }
 
@@ -57,9 +57,7 @@ export class BoardComponent {
       status: 'todo'  // Assuming new tasks start in the "To Do" column
     };
 
-    // Call the createTask method in the service, which sends a POST request to the backend
     this.taskService.createTask(taskToCreate).subscribe(() => {
-      // After the task is created, reload the tasks from the server
       this.loadTasks();
     });
   }
@@ -168,7 +166,7 @@ export class BoardComponent {
   }
 
   priorityToNumber(priority: string): number {
-    switch (priority.toLowerCase()) {
+    switch (priority) {
       case 'low':
         return 1;
       case 'medium':

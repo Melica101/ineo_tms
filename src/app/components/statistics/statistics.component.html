@@ -1,0 +1,46 @@
+<div class="pt-20 px-4 xl:px-6 pb-4 xl:pt-4 bg-gray-100 dark:bg-gray-800 h-screen overflow-scroll">
+  <h2 class="text-2xl font-bold mb-4 text-primary">Task Statistics</h2>
+
+  <!-- Key Metrics -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+    <div class="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg p-4 shadow-md">
+      <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">Total Tasks</h3>
+      <p class="text-2xl font-bold text-secondary dark:text-gray-100">{{ totalTasks }}</p>
+    </div>
+    <div class="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg p-4 shadow-md">
+      <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">Tasks Due Today</h3>
+      <p class="text-2xl font-bold text-secondary dark:text-gray-100">{{ tasksDueToday }}</p>
+    </div>
+    <div class="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg p-4 shadow-md">
+      <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">Tasks Due This Week</h3>
+      <p class="text-2xl font-bold text-secondary dark:text-gray-100">{{ tasksDueThisWeek }}</p>
+    </div>
+    <div class="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg p-4 shadow-md">
+      <h3 class="text-lg font-semibold text-red-400">Overdue Tasks</h3>
+      <p class="text-2xl font-bold text-red-600 dark:text-red-400">{{ overdueTasks }}</p>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div
+      class="bg-white flex flex-col items-center gap-y-4 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg p-4 shadow-md">
+      <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">Task Status Distribution</h3>
+      @if (isBrowser) {
+      <ng-container>
+        <canvas class="h-96 w-96" baseChart [data]="statusDistribution" [options]="statusDistributionOptions"
+          [type]="'pie'">
+        </canvas>
+      </ng-container>
+      }
+    </div>
+    <div class="bg-white flex flex-col items-center gap-y-4 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg p-4 shadow-md">
+      <h3 class="text-lg font-semibold text-gray-700 dark:text-gray-300">Task Priority Distribution</h3>
+      @if (isBrowser) {
+      <canvas class="h-96 w-96" baseChart [data]="priorityDistribution" [options]="priorityDistributionOptions"
+        [type]="'bar'">
+      </canvas>
+      }
+    </div>
+  </div>
+</div>

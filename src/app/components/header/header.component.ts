@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AddTaskComponent } from '../add-task/add-task.component';
-import { Task, TaskService } from '../../services/task.service';
+import { Task } from '../../services/task.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [AddTaskComponent],
+  imports: [AddTaskComponent, CommonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -17,6 +18,7 @@ export class HeaderComponent {
   sortToggle = false;
   selectedSortOption: string = '';
   showAddTaskModal = false;
+  isHeaderOpen: boolean = false;
 
   @Output() taskCreated = new EventEmitter<Partial<Task>>();
   @Output() filterChange = new EventEmitter<{statuses: string[], priorities: string[]}>();

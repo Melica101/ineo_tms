@@ -1,9 +1,9 @@
-<div class="mb-4 cursor-drag active:cursor-grabbing select-none" cdkDrag (click)="details()">
-  <div class="w-full p-4 bg-white shadow-lg rounded-2xl dark:bg-gray-700">
+<div class="mb-3 cursor-drag active:cursor-grabbing select-none" cdkDrag (click)="details()">
+  <div class="w-full p-3 bg-white shadow-sm rounded-xl dark:bg-gray-700">
     <div class="flex items-center justify-between mb-6">
       <div class="flex items-center">
         <div class="flex flex-col">
-          <span class="ml-2 font-bold text-black text-md dark:text-white">
+          <span class="ml-2 font-semibold text-gray-900 text-md dark:text-white">
             {{ task.title }}
           </span>
         </div>
@@ -24,13 +24,32 @@
         </svg>
       </div>
     </div>
-    <div class="flex items-center justify-between mb-4 space-x-12">
-      <span class="flex items-center px-2 py-1 text-xs font-semibold text-yellow-500 bg-yellow-100 rounded-md w-32">
+    <div class="flex items-center justify-between mb-2">
+      <span
+        class="flex sm:hidden justify-start items-center px-2 py-1 text-xs font-medium text-secondary bg-violet-100 dark:bg-violet-200 rounded-md">
+        DUE: {{ task.dueDate | date: 'dd MMM' | uppercase }}
+      </span>
+      <span
+        class="hidden sm:flex justify-start items-center px-2 py-1 text-xs font-medium text-secondary bg-violet-100 dark:bg-violet-200 rounded-md">
         DUE DATE: {{ task.dueDate | date: 'dd MMM' | uppercase }}
       </span>
       <span
-        class="flex items-center px-2 py-1 text-xs font-semibold text-red-400 bg-white border border-red-400 rounded-md">
+        class="items-center hidden sm:flex px-2 py-1 text-xs font-medium bg-white dark:bg-gray-700 border rounded-md"
+        [ngClass]="{
+    'text-pink-400 border-pink-400': task.priority === 'low',
+    'text-orange-400 border-orange-400': task.priority === 'medium',
+    'text-emerald-400 border-emerald-400': task.priority === 'high'
+  }">
         {{ task.priority.toUpperCase() }} PRIORITY
+      </span>
+      <span
+        class="items-center flex sm:hidden px-2 py-1 text-xs font-medium bg-white dark:bg-gray-700 border rounded-md"
+        [ngClass]="{
+    'text-pink-400 border-pink-400': task.priority === 'low',
+    'text-orange-400 border-orange-400': task.priority === 'medium',
+    'text-emerald-400 border-emerald-400': task.priority === 'high'
+  }">
+        {{ task.priority.toUpperCase() }}
       </span>
     </div>
   </div>

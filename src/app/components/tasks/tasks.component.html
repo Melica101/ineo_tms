@@ -1,0 +1,7 @@
+<div class="flex flex-col gap-y-2 w-full px-4">
+  <app-header (taskCreated)="taskBoard.handleTaskCreated($event)" (filterChange)="taskBoard.onFilterChange($event)"
+    (sortChange)="taskBoard.onSortChange($event)"></app-header>
+  <div class="h-[90vh] p-2 overflow-scroll">
+    <app-board #taskBoard></app-board>
+  </div>
+</div>

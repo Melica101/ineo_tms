@@ -2,8 +2,8 @@
   "tasks": [
     {
       "id": "2",
-      "title": "SOX compliance checklist",
-      "description": "<p>Description for Task SOX</p>",
+      "title": "Software regulations compliance checklist",
+      "description": "<ul><li>Secure</li><li>Safe</li><li>Easy</li></ul>",
       "status": "todo",
       "priority": "low",
       "dueDate": "2024-08-06",
@@ -38,10 +38,10 @@
     },
     {
       "id": "6",
-      "title": "Postmortem for outage",
-      "description": "Description for Task 2",
+      "title": "Fetch Tasks from API",
+      "description": "<p><em>Use JSON Server</em></p>",
       "status": "done",
-      "priority": "low",
+      "priority": "high",
       "dueDate": "2024-09-15",
       "order": 3
     },
@@ -56,17 +56,17 @@
     },
     {
       "id": "8",
-      "title": "Refactor context providers to use Zustand",
-      "description": "Description for Task 2",
+      "title": "Quality Assurance Q&A with team",
+      "description": "<p>On Google meet</p>",
       "status": "todo",
-      "priority": "low",
+      "priority": "medium",
       "dueDate": "2024-09-15",
       "order": 8
     },
     {
       "id": "9",
       "title": "Add logging to daily CRON",
-      "description": "Description for Task 9",
+      "description": "<p><u>Logssss</u></p>",
       "status": "done",
       "priority": "medium",
       "dueDate": "2024-09-15",
@@ -75,7 +75,7 @@
     {
       "id": "10",
       "title": "Set up DD dashboards for Lambda listener",
-      "description": "Description for Task 10",
+      "description": "<p>Just set up dashboards</p>",
       "status": "done",
       "priority": "medium",
       "dueDate": "2024-09-15",

@@ -17,7 +17,7 @@ export interface Task {
   providedIn: 'root',
 })
 export class TaskService {
-  private apiUrl = 'http://localhost:3000/tasks';
+  private apiUrl = 'https://ineo-tms-api.onrender.com/tasks';
 
   constructor(private http: HttpClient) {}
 

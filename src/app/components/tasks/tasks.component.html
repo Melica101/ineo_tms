@@ -1,7 +1,11 @@
+<!-- Tasks page -->
+
 <div class="flex flex-col gap-y-2 w-full px-4">
+  <!-- Task Header Component -->
   <app-header (taskCreated)="taskBoard.handleTaskCreated($event)" (filterChange)="taskBoard.onFilterChange($event)"
     (sortChange)="taskBoard.onSortChange($event)"></app-header>
   <div class="h-[90vh] p-2 overflow-scroll">
+    <!-- Task Board Component -->
     <app-board #taskBoard></app-board>
   </div>
 </div>

@@ -1,5 +1,6 @@
-<div
-  [ngClass]="{'block': isOpen, 'hidden': !isOpen, 'xl:block': true }"
+<!-- Navigation Sidebar -->
+
+<div [ngClass]="{'block': isOpen, 'hidden': !isOpen, 'xl:block': true }"
   class="fixed xl:relative z-40 inset-y-0 left-0 w-64 transform lg:transform-none bg-white dark:bg-gray-700 shadow-lg transition-transform duration-300 ease-in-out rounded-2xl h-full overflow-y-auto">
   <div class="flex items-center justify-center pt-6">
     <h1 class="font-extrabold text-2xl rounded-xl px-2 text-white bg-gradient-to-r from-primary to-secondary">
@@ -8,36 +9,34 @@
   </div>
   <nav class="px-6">
     <div>
-      <a [routerLink]="['/tasks']" routerLinkActive="router-link-active"
-        [ngClass]="{
+      <a [routerLink]="['/tasks']" routerLinkActive="router-link-active" [ngClass]="{
           'bg-gray-100 text-gray-800': isActive('/tasks') && !isDarkMode,
           'bg-gray-600 text-gray-100': isActive('/tasks') && isDarkMode,
           'text-gray-600': !isActive('/tasks') && !isDarkMode,
           'text-gray-400': !isActive('/tasks') && isDarkMode
-        }"
-        class="flex items-center p-2 mt-10 transition-colors rounded-lg">
+        }" class="flex items-center p-2 mt-10 transition-colors rounded-lg">
         <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
           <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
           <g id="SVGRepo_iconCarrier">
-            <path opacity="0.4" d="M12.3691 8.87988H17.6191" stroke="#696969" stroke-width="1.5"
+            <path opacity="0.4" d="M12.3691 8.87988H17.6191" stroke="#696969" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path opacity="0.4" d="M6.38086 8.87988L7.13086 9.62988L9.38086 7.37988" stroke="#696969" stroke-width="1.5"
               stroke-linecap="round" stroke-linejoin="round"></path>
-            <path opacity="0.4" d="M6.38086 8.87988L7.13086 9.62988L9.38086 7.37988" stroke="#696969"
-              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path opacity="0.4" d="M12.3691 15.8799H17.6191" stroke="#696969" stroke-width="1.5"
+            <path opacity="0.4" d="M12.3691 15.8799H17.6191" stroke="#696969" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round"></path>
+            <path opacity="0.4" d="M6.38086 15.8799L7.13086 16.6299L9.38086 14.3799" stroke="#696969" stroke-width="1.5"
               stroke-linecap="round" stroke-linejoin="round"></path>
-            <path opacity="0.4" d="M6.38086 15.8799L7.13086 16.6299L9.38086 14.3799" stroke="#696969"
+            <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke="#696969"
               stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z"
-              stroke="#696969" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
           </g>
         </svg>
         <span class="mx-4 text-base font-normal">Tasks</span>
         <span class="flex-grow text-right"></span>
       </a>
+
       <a [routerLink]="['/statistics']" routerLinkActive="router-link-active"
-        class="flex items-center p-2 my-6 transition-colors rounded-lg"
-        [ngClass]="{
+        class="flex items-center p-2 my-6 transition-colors rounded-lg" [ngClass]="{
           'bg-gray-100 text-gray-800': isActive('/statistics') && !isDarkMode,
           'bg-gray-600 text-gray-100': isActive('/statistics') && isDarkMode,
           'text-gray-600': !isActive('/statistics') && !isDarkMode,
@@ -64,6 +63,7 @@
         </svg>
         <span class="mx-4 text-base font-normal">Statistics</span>
       </a>
+
       <a class="cursor-pointer flex items-center p-2 transition-colors duration-200 text-gray-600 dark:text-gray-400 rounded-lg"
         (click)="toggleDarkMode()">
         <svg *ngIf="!isDarkMode" width="20px" height="20px" fill="#5e5e5e" viewBox="0 0 35 35" data-name="Layer 2"

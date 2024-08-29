@@ -158,6 +158,7 @@ export class BoardComponent {
         this.filteredTasks.sort((a, b) => this.priorityToNumber(b.priority) - this.priorityToNumber(a.priority));
         break;
       default:
+        this.filteredTasks.sort((a, b) => a.order - b.order);
         break;
     }
     this.todo = this.filteredTasks.filter(task => task.status === 'todo');

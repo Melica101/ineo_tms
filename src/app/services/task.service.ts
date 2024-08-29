@@ -21,34 +21,25 @@ export class TaskService {
 
   constructor(private http: HttpClient) {}
 
-  // CREATE a new task
+  // Create a new task
   createTask(task: Partial<Task>): Observable<Task> {
     return this.http.post<Task>(this.apiUrl, task);
   }
 
-  // READ tasks
+  // Get tasks
   getTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(this.apiUrl).pipe(
       delay(3000), // Simulate network latency
-      // map(tasks => tasks.sort((a, b) => a.order - b.order))
+      map(tasks => tasks.sort((a, b) => a.order - b.order))
     );
   }
 
-  async getData(): Promise<Task[]> {
-    // Simulate the delay using a Promise and setTimeout
-    await new Promise(resolve => setTimeout(resolve, 3000));
-    const tasks = await this.http.get<Task[]>(this.apiUrl).toPromise();
-
-    // Ensure the result is always an array
-    return tasks ? tasks.sort((a, b) => a.order - b.order) : [];
-  }
-
-  // UPDATE task status and order
+  // Update a task
   updateTask(task: Task): Observable<Task> {
     return this.http.put<Task>(`${this.apiUrl}/${task.id}`, task);
   }
 
-  // DELETE a task
+  // Delete a task
   deleteTask(taskId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${taskId}`);
   }

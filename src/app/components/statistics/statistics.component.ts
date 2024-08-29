@@ -6,7 +6,6 @@ import { isPlatformBrowser } from '@angular/common';
 
 Chart.register(...registerables);
 
-
 @Component({
   selector: 'app-statistics',
   standalone: true,
@@ -23,11 +22,11 @@ export class StatisticsComponent {
   overdueTasks = 0;
   isBrowser: boolean;
 
-  // Define custom labels
+  // Custom labels
   statusLabels = ['To Do', 'In Progress', 'Done'];
   priorityLabels = ['High', 'Medium', 'Low'];
 
-  // Define a mapping between internal status and custom labels
+  // Define a mapping between status options and custom labels
   statusLabelMap = {
     'todo': 'To Do',
     'doing': 'In Progress',

@@ -18,5 +18,4 @@ export class DeleteModalComponent {
   onCancel(): void {
     this.cancel.emit();
   }
-
 }

@@ -21,7 +21,7 @@ export class HeaderComponent {
   isHeaderOpen: boolean = false;
 
   @Output() taskCreated = new EventEmitter<Partial<Task>>();
-  @Output() filterChange = new EventEmitter<{statuses: string[], priorities: string[]}>();
+  @Output() filterChange = new EventEmitter<{ statuses: string[], priorities: string[] }>();
   @Output() sortChange = new EventEmitter<string>();
 
   openAddTaskModal(): void {
@@ -45,7 +45,6 @@ export class HeaderComponent {
       this.selectedStatuses.splice(index, 1);
     }
     this.emitFilterChange();
-    console.log(this.selectedStatuses)
   }
 
   togglePriority(priority: string) {
@@ -56,7 +55,6 @@ export class HeaderComponent {
       this.selectedPriorities.splice(index, 1);
     }
     this.emitFilterChange();
-    console.log(this.selectedPriorities)
   }
 
   emitFilterChange() {
@@ -72,6 +70,11 @@ export class HeaderComponent {
   }
 
   onSortSelection(sortOption: string) {
+    if (this.selectedSortOption === sortOption) {
+      this.selectedSortOption = '';
+      this.sortChange.emit('');
+      return;
+    }
     this.selectedSortOption = sortOption;
     this.sortChange.emit(sortOption);
     this.sortToggle = false; // Close the dropdown after selection

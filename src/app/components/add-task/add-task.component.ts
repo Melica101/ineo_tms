@@ -17,7 +17,7 @@ export class AddTaskComponent {
     status: 'todo', // Default status
     order: 0, // This will be set by the board component
     priority: 'medium', // Default priority
-    dueDate: '', // Default to empty string
+    dueDate: '',
   };
 
   @Output() saveTask = new EventEmitter<Partial<Task>>();
@@ -40,6 +40,4 @@ export class AddTaskComponent {
   onClose() {
     this.closeModal.emit();
   }
-
-
 }

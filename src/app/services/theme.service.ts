@@ -10,6 +10,7 @@ export class ThemeService {
   private isDarkModeSubject = new BehaviorSubject<boolean>(false);
   isDarkMode$ = this.isDarkModeSubject.asObservable();
 
+  // For SSR compatibility
   constructor(@Inject(PLATFORM_ID) private platformId: object) {
     if (isPlatformBrowser(this.platformId)) {
       this.applySavedTheme();

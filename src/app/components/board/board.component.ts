@@ -43,6 +43,7 @@ export class BoardComponent {
     this.taskService.getTasks().subscribe(tasks => {
       this.loading = false;
       this.tasks = tasks;
+      this.filteredTasks = tasks;
       this.todo = tasks.filter(task => task.status === 'todo');
       this.doing = tasks.filter(task => task.status === 'doing');
       this.done = tasks.filter(task => task.status === 'done');
@@ -138,5 +139,44 @@ export class BoardComponent {
     this.todo = this.filteredTasks.filter(task => task.status === 'todo');
     this.doing = this.filteredTasks.filter(task => task.status === 'doing');
     this.done = this.filteredTasks.filter(task => task.status === 'done');
+  }
+
+  onSortChange(sortOption: string): void {
+    this.applySort(sortOption);
+  }
+
+  applySort(sortOption: string): void {
+    switch (sortOption) {
+      case 'dueDateAsc':
+        this.filteredTasks.sort((a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime());
+        break;
+      case 'dueDateDesc':
+        this.filteredTasks.sort((a, b) => new Date(b.dueDate).getTime() - new Date(a.dueDate).getTime());
+        break;
+      case 'priorityAsc':
+        this.filteredTasks.sort((a, b) => this.priorityToNumber(a.priority) - this.priorityToNumber(b.priority));
+        break;
+      case 'priorityDesc':
+        this.filteredTasks.sort((a, b) => this.priorityToNumber(b.priority) - this.priorityToNumber(a.priority));
+        break;
+      default:
+        break;
+    }
+    this.todo = this.filteredTasks.filter(task => task.status === 'todo');
+    this.doing = this.filteredTasks.filter(task => task.status === 'doing');
+    this.done = this.filteredTasks.filter(task => task.status === 'done');
+  }
+
+  priorityToNumber(priority: string): number {
+    switch (priority.toLowerCase()) {
+      case 'low':
+        return 1;
+      case 'medium':
+        return 2;
+      case 'high':
+        return 3;
+      default:
+        return 0;
+    }
   }
 }

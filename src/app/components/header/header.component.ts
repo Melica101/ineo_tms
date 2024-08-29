@@ -15,10 +15,12 @@ export class HeaderComponent {
   selectedStatuses: string[] = [];
   selectedPriorities: string[] = [];
   sortToggle = false;
+  selectedSortOption: string = '';
   showAddTaskModal = false;
 
   @Output() taskCreated = new EventEmitter<Partial<Task>>();
   @Output() filterChange = new EventEmitter<{statuses: string[], priorities: string[]}>();
+  @Output() sortChange = new EventEmitter<string>();
 
   openAddTaskModal(): void {
     this.showAddTaskModal = true;
@@ -65,6 +67,16 @@ export class HeaderComponent {
 
   isPrioritySelected(priority: string): boolean {
     return this.selectedPriorities.includes(priority);
+  }
+
+  onSortSelection(sortOption: string) {
+    this.selectedSortOption = sortOption;
+    this.sortChange.emit(sortOption);
+    this.sortToggle = false; // Close the dropdown after selection
+  }
+
+  isSelected(sortOption: string): boolean {
+    return this.selectedSortOption === sortOption;
   }
 
 }

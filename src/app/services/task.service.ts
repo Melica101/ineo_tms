@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 
 export interface Task {
   id: number;
@@ -29,8 +29,18 @@ export class TaskService {
   // READ tasks
   getTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(this.apiUrl).pipe(
-      map(tasks => tasks.sort((a, b) => a.order - b.order))
+      delay(3000), // Simulate network latency
+      // map(tasks => tasks.sort((a, b) => a.order - b.order))
     );
+  }
+
+  async getData(): Promise<Task[]> {
+    // Simulate the delay using a Promise and setTimeout
+    await new Promise(resolve => setTimeout(resolve, 3000));
+    const tasks = await this.http.get<Task[]>(this.apiUrl).toPromise();
+
+    // Ensure the result is always an array
+    return tasks ? tasks.sort((a, b) => a.order - b.order) : [];
   }
 
   // UPDATE task status and order

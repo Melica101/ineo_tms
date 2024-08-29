@@ -13,9 +13,27 @@
     <h3 class="text-xl font-bold mb-4 text-red-500">To Do</h3>
     <div cdkDropList id="todo" class="bg-gray-200 p-4 rounded-lg" [cdkDropListData]="todo"
       (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['doing', 'done']">
+      @if (!loading) {
       <div class="overflow-hidden" *ngFor="let task of todo" cdkDrag (click)="openTaskDetails(task)">
-        <app-card [task]="task" (openDetails)="openTaskDetails($event)" (deleteTask)="onTaskDeleteRequested($event)"></app-card>
+        <app-card [task]="task" (openDetails)="openTaskDetails($event)"
+          (deleteTask)="onTaskDeleteRequested($event)"></app-card>
       </div>
+      } @else {
+      <div class="mb-4">
+        <div class="w-full bg-white shadow-lg rounded-2xl">
+          <div class="p-3 h-">
+            <div class="grid grid-cols-2 gap-4 mt-2">
+              <div class="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+              </div>
+              <div class="h-8 bg-gray-200 rounded animate-pulse">
+              </div>
+              <div class="h-8 bg-gray-200 rounded  animate-pulse">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
     </div>
   </div>
 
@@ -24,9 +42,26 @@
     <h3 class="text-xl font-bold mb-4 text-blue-500">In Progress</h3>
     <div cdkDropList id="doing" class="bg-gray-200 p-4 rounded-lg" [cdkDropListData]="doing"
       (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['todo', 'done']">
+      @if (!loading) {
       <div class="overflow-hidden" *ngFor="let task of doing" cdkDrag (click)="openTaskDetails(task)">
         <app-card [task]="task" (deleteTask)="onTaskDeleteRequested($event)"></app-card>
       </div>
+      } @else {
+      <div class="mb-4">
+        <div class="w-full bg-white shadow-lg rounded-2xl">
+          <div class="p-3 h-">
+            <div class="grid grid-cols-2 gap-4 mt-2">
+              <div class="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+              </div>
+              <div class="h-8 bg-gray-200 rounded animate-pulse">
+              </div>
+              <div class="h-8 bg-gray-200 rounded  animate-pulse">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
     </div>
   </div>
 
@@ -35,9 +70,26 @@
     <h3 class="text-xl font-bold mb-4 text-emerald-500">Done</h3>
     <div cdkDropList id="done" class="bg-gray-200 p-4 rounded-lg" [cdkDropListData]="done"
       (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['todo', 'doing']">
+      @if (!loading) {
       <div class="overflow-hidden" *ngFor="let task of done" cdkDrag (click)="openTaskDetails(task)">
         <app-card [task]="task" (deleteTask)="onTaskDeleteRequested($event)"></app-card>
       </div>
+      } @else {
+      <div class="mb-4">
+        <div class="w-full bg-white shadow-lg rounded-2xl">
+          <div class="p-3 h-">
+            <div class="grid grid-cols-2 gap-4 mt-2">
+              <div class="h-8 col-span-2 bg-gray-200 rounded animate-pulse">
+              </div>
+              <div class="h-8 bg-gray-200 rounded animate-pulse">
+              </div>
+              <div class="h-8 bg-gray-200 rounded  animate-pulse">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
     </div>
   </div>
 </div>

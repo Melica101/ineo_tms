@@ -16,8 +16,6 @@ export class CardComponent {
   @Output() deleteTask = new EventEmitter<Task>();
   @Output() openDetails = new EventEmitter<Task>();
 
-  loading = false;
-
   onDelete(): void {
     this.deleteTask.emit(this.task);
   }

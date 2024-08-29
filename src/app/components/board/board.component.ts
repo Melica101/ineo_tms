@@ -19,6 +19,7 @@ export class BoardComponent {
   todo: Task[] = [];
   doing: Task[] = [];
   done: Task[] = [];
+  loading = true;
 
   showModal = false;
   selectedTask: Task | null = null;
@@ -27,15 +28,21 @@ export class BoardComponent {
   showDeleteConfirmation = false;
 
   @Input() newTask: Task | null = null;
+  @Input() tasks: Task[] = [];
+  @Input() filteredTasks: Task[] = [];
 
-  constructor(private taskService: TaskService) {}
+
+  constructor(private taskService: TaskService) { }
 
   ngOnInit(): void {
     this.loadTasks();
   }
 
   loadTasks(): void {
+    this.loading = true;
     this.taskService.getTasks().subscribe(tasks => {
+      this.loading = false;
+      this.tasks = tasks;
       this.todo = tasks.filter(task => task.status === 'todo');
       this.doing = tasks.filter(task => task.status === 'doing');
       this.done = tasks.filter(task => task.status === 'done');
@@ -112,11 +119,24 @@ export class BoardComponent {
     }
   }
 
-
   updateTaskOrders(tasks: Task[]): void {
     tasks.forEach((task, index) => {
       task.order = index + 1;
       this.taskService.updateTask(task).subscribe();
     });
+  }
+
+  onFilterChange(filters: { statuses: string[], priorities: string[] }) {
+    this.applyFilters(filters);
+  }
+
+  applyFilters(filters: { statuses: string[], priorities: string[] }) {
+    this.filteredTasks = this.tasks.filter(task =>
+      (filters.statuses.length === 0 || filters.statuses.includes(task.status)) &&
+      (filters.priorities.length === 0 || filters.priorities.includes(task.priority))
+    );
+    this.todo = this.filteredTasks.filter(task => task.status === 'todo');
+    this.doing = this.filteredTasks.filter(task => task.status === 'doing');
+    this.done = this.filteredTasks.filter(task => task.status === 'done');
   }
 }

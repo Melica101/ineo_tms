@@ -5,9 +5,9 @@
       "title": "SOX compliance checklist",
       "description": "<p>Description for Task SOX</p>",
       "status": "todo",
-      "priority": "Low",
+      "priority": "low",
       "dueDate": "2024-09-17",
-      "order": 8
+      "order": 1
     },
     {
       "id": "3",
@@ -25,43 +25,43 @@
       "status": "todo",
       "priority": "medium",
       "dueDate": "2024-09-15",
-      "order": 9
+      "order": 3
     },
     {
       "id": "5",
       "title": "Research DB options for new microservice",
       "description": "Description for Task 2",
-      "status": "todo",
+      "status": "doing",
       "priority": "medium",
       "dueDate": "2024-09-15",
-      "order": 5
+      "order": 6
     },
     {
       "id": "6",
       "title": "Postmortem for outage",
       "description": "Description for Task 2",
-      "status": "doing",
+      "status": "done",
       "priority": "low",
       "dueDate": "2024-09-15",
-      "order": 3
+      "order": 12
     },
     {
       "id": "7",
       "title": "Sync with product on Q3 roadmap",
       "description": "<p>Description for Task 6</p>",
-      "status": "doing",
+      "status": "todo",
       "priority": "medium",
       "dueDate": "2024-09-15",
-      "order": 1
+      "order": 4
     },
     {
       "id": "8",
       "title": "Refactor context providers to use Zustand",
       "description": "Description for Task 2",
-      "status": "todo",
+      "status": "doing",
       "priority": "low",
       "dueDate": "2024-09-15",
-      "order": 6
+      "order": 7
     },
     {
       "id": "9",
